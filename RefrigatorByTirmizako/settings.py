@@ -25,7 +25,7 @@ SECRET_KEY = 'd17%g$)tm1t3ahf+kcleu)5d4gq4!+43dw6zy$ul50v(a!wbua'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','https://tirmizako-fridge-hackaton.herokuapp.com/']
+ALLOWED_HOSTS = ['tirmizako-fridge-hackaton.herokuapp.com']
 
 
 # Application definition
