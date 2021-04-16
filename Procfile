@@ -1,0 +1,1 @@
+web: gunicorn RefrigatorByTirmizako.wsgi --log-file -
