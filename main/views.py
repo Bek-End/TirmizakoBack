@@ -184,6 +184,19 @@ class ProductsGetByCategory(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
+class ProductsGetAll(APIView):
+    @staticmethod
+    def get(request):
+        username, password = decode(request.headers['Authorization'])
+        account = authenticate(username=username, password=password)
+        if(account is not None):
+            products = Fruit.objects.all()
+            catProducts = FruitSerializer(products, many=True)
+            return Response({"products": catProducts.data}, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
 class CheckExpiration(APIView):
     @staticmethod
     def post(request):

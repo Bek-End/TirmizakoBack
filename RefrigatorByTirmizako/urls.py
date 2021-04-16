@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from main.views import SignUp, SignIn, AddFruit, UpdateFruit, RemoveFruit, UserCartAddProduct, UserCartRemoveProduct, CheckExpiration, ProductsGetExpired, ProductsGetFresh, ProductsGetByCategory
+from main.views import SignUp, SignIn, AddFruit, UpdateFruit, RemoveFruit, UserCartAddProduct, UserCartRemoveProduct, CheckExpiration, ProductsGetExpired, ProductsGetFresh, ProductsGetByCategory, ProductsGetAll
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,5 +18,6 @@ urlpatterns = [
          ProductsGetExpired.as_view(), name="ExpiredProducts"),
     path('expiration/get_fresh', ProductsGetFresh.as_view(), name="FreshProducts"),
     path('expiration/get_by_category/<category>',
-         ProductsGetByCategory.as_view(), name="CategoryProducts")
+         ProductsGetByCategory.as_view(), name="CategoryProducts"),
+    path('expiration/get_all', ProductsGetAll.as_view(), name="ProductsAll")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
