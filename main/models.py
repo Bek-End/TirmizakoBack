@@ -15,7 +15,7 @@ class Fruit(models.Model):
     unit = models.CharField(verbose_name="Unit", max_length=40, default="KG")
     isExpired = models.BooleanField(verbose_name="IsExpired", default=False)
     barcode = models.CharField(
-        max_length=120, verbose_name="Barcode", blank=True,unique=False)
+        max_length=120, verbose_name="Barcode", blank=True,unique=False,null=True)
 
     class Meta:
         verbose_name = "Fruit"
