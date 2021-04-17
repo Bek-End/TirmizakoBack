@@ -50,13 +50,14 @@ class AddFruit(APIView):
             fruit = Fruit.objects.create(
                 name=name, expire_date=expire_date, image=image, category=cat, quantity=quantity, unit=unit)
             UsersFruits.objects.create(user=account, fruit=fruit)
+            print(fruit.name)
             return Response({
                 "fruit_id": fruit.id,
                 "image_url": fruit.image.url,
                 "name": str(fruit.name),
                 "expire_date": fruit.expire_date,
                 "file": fruit.image.url,
-                "category": fruit.category.name,
+                "category": fruit.category,
                 "is_expired": fruit.isExpired
             },
                 status=status.HTTP_200_OK)
