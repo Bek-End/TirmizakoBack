@@ -53,7 +53,7 @@ class AddFruit(APIView):
             return Response({
                 "fruit_id": fruit.id,
                 "image_url": fruit.image.url,
-                "name": fruit.name,
+                "name": str(fruit.name),
                 "expire_date": fruit.expire_date,
                 "file": fruit.image.url,
                 "category": fruit.category.name,
