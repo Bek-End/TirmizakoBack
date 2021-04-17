@@ -83,6 +83,7 @@ class RemoveFruit(APIView):
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+
 class RemoveByBarCode(APIView):
     @staticmethod
     def delete(request):
@@ -159,6 +160,22 @@ class UserCartRemoveProduct(APIView):
             item = UserCart.objects.get(fruit=fruit)
             item.delete()
             return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+
+class UserCartGetProducts(APIView):
+    @staticmethod
+    def get(request):
+        username, password = decode(request.headers['Authorization'])
+        account = authenticate(username=username, password=password)
+        prod_list = []
+        if(account is not None):
+            items = UserCart.objects.all().filter(user=account)
+            for element in items.iterator():
+                prod_list.append(element.fruit)
+            products = FruitSerializer(prod_list, many=True)
+            return Response({"products": products.data}, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
