@@ -58,7 +58,7 @@ class AddFruit(APIView):
                 "name": str(fruit.name),
                 "expire_date": fruit.expire_date,
                 "category": fruit.category,
-                "is_expired": fruit.isExpired
+                "is_expired": fruit.isExpired,
             },
                 status=status.HTTP_200_OK)
         else:
