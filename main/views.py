@@ -83,6 +83,20 @@ class RemoveFruit(APIView):
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+class RemoveByBarCode(APIView):
+    @staticmethod
+    def delete(request):
+        username, password = decode(request.headers['Authorization'])
+        account = authenticate(username=username, password=password)
+        barcode = int(request.data["barcode"])
+        if(account is not None):
+            fruit = Fruit.objects.get(barcode=barcode)
+            fruit.image.delete(save=True)
+            fruit.delete()
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 
 class UpdateFruit(APIView):
     @staticmethod
