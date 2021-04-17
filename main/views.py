@@ -56,7 +56,6 @@ class AddFruit(APIView):
                 "image_url": fruit.image.url,
                 "name": str(fruit.name),
                 "expire_date": fruit.expire_date,
-                "file": fruit.image.url,
                 "category": fruit.category,
                 "is_expired": fruit.isExpired
             },
@@ -108,7 +107,6 @@ class UpdateFruit(APIView):
                     "image_url": fruit.image.url,
                     "name": fruit.name,
                     "expire_date": fruit.expire_date,
-                    "file": fruit.image.url,
                     "category": fruit.category,
                     "is_expired": fruit.isExpired
                 },
