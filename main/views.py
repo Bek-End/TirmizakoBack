@@ -47,13 +47,9 @@ class AddFruit(APIView):
             cat = request.data["category"]
             quantity = request.data["quantity"]
             unit = request.data['unit']
-            if request.data['barcode'] is not None:
-                barcode = request.data['barcode']
-                fruit = Fruit.objects.create(
-                    name=name, expire_date=expire_date, image=image, category=cat, quantity=quantity, unit=unit, barcode=barcode)
-            else:
-                fruit = Fruit.objects.create(
-                    name=name, expire_date=expire_date, image=image, category=cat, quantity=quantity, unit=unit)
+            barcode = request.data['barcode']
+            fruit = Fruit.objects.create(
+                name=name, expire_date=expire_date, image=image, category=cat, quantity=quantity, unit=unit, barcode=barcode)
             UsersFruits.objects.create(user=account, fruit=fruit)
             print(fruit.name)
             return Response({
