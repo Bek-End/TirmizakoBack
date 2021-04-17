@@ -109,7 +109,7 @@ class UpdateFruit(APIView):
                     "name": fruit.name,
                     "expire_date": fruit.expire_date,
                     "file": fruit.image.url,
-                    "category": fruit.category.name,
+                    "category": fruit.category,
                     "is_expired": fruit.isExpired
                 },
                 status=status.HTTP_200_OK)
