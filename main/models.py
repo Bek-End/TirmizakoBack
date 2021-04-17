@@ -14,6 +14,8 @@ class Fruit(models.Model):
     quantity = models.FloatField(verbose_name="Quantity", default=1)
     unit = models.CharField(verbose_name="Unit", max_length=40, default="KG")
     isExpired = models.BooleanField(verbose_name="IsExpired", default=False)
+    barcode = models.CharField(
+        max_length=120, verbose_name="Barcode", blank=True)
 
     class Meta:
         verbose_name = "Fruit"
